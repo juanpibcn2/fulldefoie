@@ -274,8 +274,7 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 100px;
             width: 1px;
             height: 100%;
             background: rgba(0, 0, 0, 0.1);
@@ -291,9 +290,10 @@
         .day-header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
+            padding-left: 0;
         }
 
         .day-badge {
@@ -324,34 +324,16 @@
             position: relative;
             margin-bottom: 3rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
             align-items: start;
-        }
-
-        .activity:nth-child(odd) .activity-content {
-            grid-column: 1;
-            text-align: right;
-        }
-
-        .activity:nth-child(odd) .activity-spacer {
-            grid-column: 2;
-        }
-
-        .activity:nth-child(even) .activity-spacer {
-            grid-column: 1;
-        }
-
-        .activity:nth-child(even) .activity-content {
-            grid-column: 2;
-            text-align: left;
         }
 
         .activity::before {
             content: '';
             position: absolute;
-            left: 50%;
-            top: 1.5rem;
+            left: 100px;
+            top: 0.5rem;
             transform: translateX(-50%);
             width: 8px;
             height: 8px;
@@ -361,21 +343,23 @@
             z-index: 2;
         }
 
+        .activity-time {
+            font-weight: 400;
+            color: var(--text-color);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-right: 1rem;
+            text-align: right;
+            padding-top: 0.3rem;
+        }
+
         .activity-content {
             background: white;
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 0;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .activity-time {
-            font-weight: 400;
-            color: var(--text-light);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
         }
 
         .activity-details h4 {
@@ -407,6 +391,10 @@
             width: 100%;
             max-height: 250px;
             object-fit: cover;
+        }
+
+        .activity-spacer {
+            display: none;
         }
 
         /* Presupuesto */
@@ -586,29 +574,30 @@
 
             /* Timeline mobile */
             .timeline::before {
-                left: 30px;
+                left: 60px;
             }
 
             .activity {
-                grid-template-columns: 1fr !important;
-                padding-left: 60px;
+                grid-template-columns: 60px 1fr;
+                gap: 1rem;
             }
 
             .activity::before {
-                left: 30px !important;
+                left: 60px;
+            }
+
+            .activity-time {
+                font-size: 0.65rem;
+                letter-spacing: 0.5px;
+                padding-right: 0.5rem;
             }
 
             .activity-content {
-                text-align: left !important;
+                padding: 1.5rem;
             }
 
-            .activity:nth-child(odd) .activity-content,
-            .activity:nth-child(even) .activity-content {
-                grid-column: 1;
-            }
-
-            .activity-spacer {
-                display: none;
+            .activity-details h4 {
+                font-size: 1.1rem;
             }
 
             .day-badge {
@@ -670,7 +659,7 @@
                     </ul>
                 </div>
                 <div class="refugio-image">
-                    <img src="images/hero_cortijo.jpg" alt="Cortijo La Almazara">
+                    <img src="images/cortijo_pool.png" alt="Cortijo La Almazara">
                 </div>
             </div>
         </div>
@@ -682,7 +671,7 @@
             <h2 style="text-align: center; color: var(--accent-color); margin-bottom: 2rem;">Vistas desde el Cortijo</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="images/cortijo_pool.png" alt="Piscina del Cortijo">
+                    <img src="images/cortijo_interior.png" alt="Piscina del Cortijo">
                 </div>
                 <div class="gallery-item">
                     <img src="images/ronda_landscape.jpg" alt="Paisaje de Ronda">
@@ -707,14 +696,13 @@
                         </div>
                     </div>
                     <div class="activity">
+                        <div class="activity-time">Tarde</div>
                         <div class="activity-content">
-                            <div class="activity-time">Tarde</div>
                             <div class="activity-details">
                                 <h4>Bienvenida al Cortijo</h4>
                                 <p>Recepción de invitados y cena íntima de bienvenida en el salón principal del Cortijo. Primera toma de contacto con la gastronomía local.</p>
                             </div>
                         </div>
-                        <div class="activity-spacer"></div>
                     </div>
                 </div>
 
@@ -727,9 +715,8 @@
                         </div>
                     </div>
                     <div class="activity">
-                        <div class="activity-spacer"></div>
+                        <div class="activity-time">Mañana</div>
                         <div class="activity-content">
-                            <div class="activity-time">Mañana</div>
                             <div class="activity-details">
                                 <h4>Ronda & Setenil</h4>
                                 <p>Visita privada a los pueblos blancos más emblemáticos.</p>
@@ -737,8 +724,8 @@
                         </div>
                     </div>
                     <div class="activity">
+                        <div class="activity-time">Mediodía</div>
                         <div class="activity-content">
-                            <div class="activity-time">Mediodía</div>
                             <div class="activity-details">
                                 <h4>Mesón Sabor Andaluz *</h4>
                                 <p>Menú Fanega: 12 pases salados y 3 dulces. Una estrella Michelin.</p>
@@ -747,12 +734,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-spacer"></div>
                     </div>
                     <div class="activity">
-                        <div class="activity-spacer"></div>
+                        <div class="activity-time">Noche</div>
                         <div class="activity-content">
-                            <div class="activity-time">Noche</div>
                             <div class="activity-details">
                                 <h4>Cena Flamenca Privada</h4>
                                 <p>Chef privado en el cortijo y espectáculo flamenco en vivo.</p>
@@ -773,8 +758,8 @@
                         </div>
                     </div>
                     <div class="activity">
+                        <div class="activity-time">Mañana</div>
                         <div class="activity-content">
-                            <div class="activity-time">Mañana</div>
                             <div class="activity-details">
                                 <h4>El Oro Líquido</h4>
                                 <ul style="margin-left: 1.5rem; margin-top: 1rem;">
@@ -788,12 +773,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="activity-spacer"></div>
                     </div>
                     <div class="activity">
-                        <div class="activity-spacer"></div>
+                        <div class="activity-time">Mediodía</div>
                         <div class="activity-content">
-                            <div class="activity-time">Mediodía</div>
                             <div class="activity-details">
                                 <h4>Picnic entre Olivos</h4>
                                 <p>Una comida campestre de lujo rodeados de olivos centenarios. Tarde libre para disfrutar del cortijo. Cena libre en Ronda.</p>
@@ -814,14 +797,13 @@
                         </div>
                     </div>
                     <div class="activity">
+                        <div class="activity-time">Mañana</div>
                         <div class="activity-content">
-                            <div class="activity-time">Mañana</div>
                             <div class="activity-details">
                                 <h4>Hasta pronto</h4>
                                 <p>Desayuno y vuelta a casa con el alma llena.</p>
                             </div>
                         </div>
-                        <div class="activity-spacer"></div>
                     </div>
                 </div>
             </div>
